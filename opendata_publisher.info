@@ -1,0 +1,17 @@
+name = OpenData Publisher
+description = OpenData Publisher is a data visualizer/publisher
+core = 6.x
+package = Feeds
+dependencies[] = feeds
+dependencies[] = views_customfield  
+dependencies[] = charts_graphs  
+dependencies[] = views 
+dependencies[] = views_groupby
+dependencies[] = views_or
+dependencies[] = context 
+dependencies[] = openlayers 
+dependencies[] = ctools 
+dependencies[] = mapbox 
+dependencies[] = quicktabs
+dependencies[] = schema
+dependencies[] = tw  
