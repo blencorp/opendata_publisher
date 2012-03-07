@@ -15,4 +15,3 @@ function checkall(fields) {
       elem[i].checked = false;
   }
 }
-

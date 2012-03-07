@@ -4,9 +4,9 @@ OpenData Publisher Module for Drupal
 
 Description
 ===================
-OpenData Publisher is a data visualizer/publisher created by BLENCorp for the Department 
-of Education. It enables administrators to quickly publish data on a Drupal 
-site. 
+OpenData Publisher is a data visualizer/publisher created by BLENCorp for the 
+Department of Education. It enables administrators to quickly publish data on 
+a Drupal site. 
 
 Dependencies
 ===================

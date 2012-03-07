@@ -1,22 +1,26 @@
 <?php
- 
+
 /**
+ * @file
  * Implementation of hook_menu().
  */
 
-function opendata_publisher_menu() {  
+/**
+ * Implements hook_menu().
+ */
+function opendata_publisher_menu() {
 
   $items = array();
-  
-  $items['admin/content/opendata'] = array(
-    'title' => 'OpenData', 
-    'description' => t('General Information'),
+
+  $items['admin/content/opendata_publisher'] = array(
+    'title' => 'OpenData Publisher',
+    'description' => 'Visualize your open data in few clicks.',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('opendata_publisher_general'),
     'access arguments' => array('access administration pages'),
     'type' => MENU_NORMAL_ITEM,
-    'file' => 'opendata.general.inc',
+    'file' => 'opendata_publisher.general.inc',
   );
-  
+
   return $items;
 }
