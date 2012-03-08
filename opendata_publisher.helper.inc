@@ -1015,7 +1015,7 @@ function _opendata_publisher_has_pk($tablename) {
   $schema = $inspect[$tablename];
 
   if (!$schema) {
-    drupal_set_message(t('Could not analyze !tablename',
+    drupal_set_message(t(check_plain('Could not analyze !tablename'),
       array('!tablename' => $tablename)), 'error');
     return FALSE;
   }

@@ -26,7 +26,8 @@
  *  Creates a pie or bar chart using the amCharts module
  */
 
-function opendata_publisher_create_chart (&$view, $dataset_name, $chart_type, $chart_title, $series_fields, $x_labels) {
+function opendata_publisher_create_chart(&$view, $dataset_name, $chart_type, 
+  $chart_title, $series_fields, $x_labels) {
   if ($chart_type == "pie" || $chart_type == "bar") {
     if ($chart_type == "pie") {
       $handler = $view->new_display('block', 'Pie Chart', 'block_1');

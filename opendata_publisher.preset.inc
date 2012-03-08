@@ -56,7 +56,8 @@ function opendata_publisher_create_preset($preset_name, $preset_type) {
   }
   else {
     $strmsg = 'Error: could not save OL preset';
-    drupal_set_message(t($strmsg . ' !pn.', array('!pn' => $pn)), 'error');
+    drupal_set_message(t(check_plain('Could not save OpenLayers Preset !pn.'), 
+      array('!pn' => $pn)), 'error');
     return FALSE;
   }
 }

@@ -134,7 +134,8 @@ function opendata_publisher_context_form_submit($form, &$form_state) {
   $reactions[] = array("views", "ed_cag_schools-block_1", "content_top", "2");
 
   if (opendata_publisher_create_context($cname, $tag, $conditions, $reactions)) {
-    drupal_set_message(t('Success: context ' . $cname . ' has been created.'));
+    drupal_set_message(t(check_plain('Context !cname has been created.'), 
+      array('!cname' => $cname)), 'status');
   }
   else {
     drupal_set_message(t('Error: could not create context.'));

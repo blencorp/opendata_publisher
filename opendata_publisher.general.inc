@@ -390,8 +390,8 @@ function opendata_publisher_general_views(&$form_state) {
   $map_long = $form_state['storage']['summary_values']['summary_map']['map_long'];
 
   // Check if "Include Map" has been checked for summary and detail pages.
-  $doMap_summary = $form_state['storage']['summary_values']['summary_map']['map_option'];
-  $doMap_detail = $form_state['storage']['published_values']['map_option'];
+  $do_map_summary = $form_state['storage']['summary_values']['summary_map']['map_option'];
+  $do_map_detail = $form_state['storage']['published_values']['map_option'];
 
   // Detail Fields.
   // Build a perm URL.
@@ -429,7 +429,7 @@ function opendata_publisher_general_views(&$form_state) {
   $display_type = '';
 
   // Summary map: create OpenLayers preset and views display.
-  if ($doMap_summary == 1) {
+  if ($do_map_summary == 1) {
     $display_type = 'openlayers_data_summary';
     opendata_publisher_create_display(&$view, $display_type, &$form_state);
 
@@ -462,7 +462,7 @@ function opendata_publisher_general_views(&$form_state) {
     $display_type = '';
 
   // Detail map: create OpenLayers preset and views display.
-  if ($doMap_detail == 1) {
+  if ($do_map_detail == 1) {
     $display_type = 'openlayers_data_detail';
     opendata_publisher_create_display(&$view, $display_type, &$form_state);
 
@@ -524,7 +524,7 @@ function opendata_publisher_general_views(&$form_state) {
   $is_created = FALSE;
 
   // Build summary context.
-  if ($doMap_detail == 1) {
+  if ($do_map_detail == 1) {
     $cname = $unique_name . '_detail';
     $tag = 'OpenData Module';
 
@@ -563,5 +563,6 @@ function opendata_publisher_general_views(&$form_state) {
   global $base_url;
   $link = $base_url . '/' . $url;
   drupal_set_message(t('Dataset Published Successfully!'));
-  drupal_set_message(t('Showtime @ !url', array('!url' => l($link, $link))));
+  drupal_set_message(t(check_plain('Showtime @ !url'), 
+    array('!url' => l(t($link), $link))));
 }
