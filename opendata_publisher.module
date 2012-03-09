@@ -7,6 +7,9 @@
 
 /**
  * Implements hook_menu().
+ * TODO: need to use drupal_get_form. But first need to change 
+ * the dataset creation form.
+ * Moto: Visualize your open data in few clicks.
  */
 function opendata_publisher_menu() {
 
@@ -14,12 +17,37 @@ function opendata_publisher_menu() {
 
   $items['admin/content/opendata_publisher'] = array(
     'title' => 'OpenData Publisher',
-    'description' => 'Visualize your open data in few clicks.',
+    'description' => 'OpenData List',
+    'page callback' => 'opendata_publisher_list',
+    'page arguments' => array('opendata_publisher_list'),
+    'access arguments' => array('access administration pages'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'opendata_publisher.admin.inc',
+  );
+
+  $items['admin/content/opendata_publisher/list'] = array(
+    'title' => 'List',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => -10,
+  );
+
+  $items['admin/content/opendata_publisher/add'] = array(
+    'title' => 'Add Dataset',
+    'description' => t('Add dataset'),
     'page callback' => 'drupal_get_form',
     'page arguments' => array('opendata_publisher_general'),
     'access arguments' => array('access administration pages'),
-    'type' => MENU_NORMAL_ITEM,
-    'file' => 'opendata_publisher.general.inc',
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'opendata_publisher.admin.inc',
+  );
+
+  $items['admin/content/opendata_publisher/import'] = array(
+    'title' => 'Import', 
+    'description' => t('Import an OpenData Definition'), 
+    'page callback' => 'opendata_publisher_import_page',
+    'access arguments' => array('access administration pages'),
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'opendata_publisher.admin.inc',
   );
 
   return $items;

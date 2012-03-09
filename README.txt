@@ -1,15 +1,13 @@
-------------------------------------------------------------------------------
-OpenData Publisher Module for Drupal
-------------------------------------------------------------------------------
-
 Description
-===================
+-----------
+
 OpenData Publisher is a data visualizer/publisher created by BLENCorp for the 
 Department of Education. It enables administrators to quickly publish data on 
 a Drupal site. 
 
 Dependencies
-===================
+------------
+
 * feeds
 * views_customfield  
 * charts_graphs  
@@ -25,7 +23,7 @@ Dependencies
 * tw  
 
 Summary page description block 
-===============================
+------------------------------
 
 The description block has four fields of type "Customfield". 
 Customfield is provided by the views_customfield module. This is a field that 
@@ -45,22 +43,30 @@ markup in the main Data_Ed_Gov.css file is the "More Information" image
 button. 
 
 Detail page title generation
-===============================
+----------------------------
+
 The detail page title is constructed by _opendata_get_title_field, which 
 is defined in opendata.helper.inc. This function will look for a field 
 set as a title field from the detail field list. If a title field is not 
 selected, it will set the first selected field as the title field.
 
 Summary page field generation 
-=============================
+-----------------------------
+
 In opendata.helper.inc, the function _opendata_build_view_summary_fields 
 creates the columns as well as the appropriate link to the detail page. 
 All fields are initially tagged with a path attribute and this attribute 
 is later extracted from all fields except the first column by the function 
 _opendata_sort_display_order.
 
+TODO
+----
+
+- Save metadata to database
+- On edit, show all relevant components (views, OL presets, etc)
+- On delete, remove all components
 
 Maintainers
-===================
+-----------
 Mike Endale (BLEN Corp) http://drupal.org/user/1194188 
 Henok Mikre (BLEN Corp) http://drupal.org/user/1015742 

@@ -566,3 +566,77 @@ function opendata_publisher_general_views(&$form_state) {
   drupal_set_message(t(check_plain('Showtime @ !url'), 
     array('!url' => l(t($link), $link))));
 }
+
+/**
+ *  Lists all opendata_publisher items.
+ *
+ */
+function opendata_publisher_list() {
+  $result = db_query('SELECT vid, name 
+                      FROM {views_view}
+                      WHERE name LIKE "od_%" 
+                      ORDER BY vid DESC');
+  $header = array(
+    array('data' => t('OpenData')), 
+    array('data' => t('Operations'), 'colspan' => 3),
+  );
+  $rows = array();
+  while ($row = db_fetch_object($result)) {
+    $tablerow = array(
+      array('data' => $row->name),
+      array('data' => l(t('Edit'), 
+        'admin/content/opendata_publisher/' . $row->vid . '/edit')),
+      array('data' => l(t('Delete'), 
+        'admin/content/opendata_publisher/' .$row->vid . '/delete')),
+    );
+    $rows[] = $tablerow;
+  }
+  if (!empty($rows)) {
+    $output = theme('table', $header, $rows, array('id' => 'quicktabs'));
+  } else {
+    $output = '<p>' . t('Add a dataset.') . '</p>';
+  }
+  return $output;
+}
+
+/**
+ * Page callback for import form.
+ */
+function opendata_publisher_import_page() {
+  if (!empty($_POST) && $_POST['form_id'] == 'opendata_publisher_form') {
+    return drupal_get_form('opendata_publisher_form', 'add');
+  } 
+  return drupal_get_form('opendata_publisher_import');
+}
+
+/**
+ * Import form.
+ */
+function opendata_publisher_import() {
+  drupal_set_title(t('Import OpenData Publisher Definition'));
+
+  $note = t('You can import an OpenData Publisher definition by 
+              pasting an exported OpenData Publisher object code 
+              into the field below.');
+  
+  $form = array();
+
+  $form['note'] = array(
+    '#type' => 'item',
+    '#value' => $note,
+  );
+
+  $form['import'] = array(
+    '#title' => t('OpenData Publisher Object'),
+    '#type' => 'textarea',
+    '#rows' => 10,
+    '#required' => TRUE,
+  );
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Import'),
+  );
+
+  return $form;
+}
+
